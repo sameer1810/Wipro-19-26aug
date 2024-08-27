@@ -1,0 +1,26 @@
+spring:
+ application:
+  name: zuul-api-gateway-server-22aug
+cloud:
+  gateway:
+     routes[0]:
+        id: currency-exchange-service-aug21
+        url: http://localhost:8000
+        predicates[0]: path=//currency-exchange/from/{from}/to/{to}
+     routes[1]:
+        id: currency-conversion-service-aug21
+        url: http://localhost:8100
+        predicates[0]: path=//currency-conversion/from/{from}/to/{to}
+     
+     discovery:
+       locator:
+          enabled: true
+          lower-case-service-id: true
+     
+server:
+  port: 8765
+  
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8765/eureka

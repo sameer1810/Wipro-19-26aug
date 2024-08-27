@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: Eureka-naming-server-aug22
+  cloud:
+    config:
+      import-check:
+        enabled: false
+server:
+  port: 8761
+currency-exchange-service:
+  ribbon:
+    listOfServers: http://localhost:8050,http://localhost:8051
+eureka:
+  clients:
+    register-with-eureka: false
+    fetch-registry: false
